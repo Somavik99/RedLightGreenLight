@@ -6,7 +6,7 @@ const Registration = () => {
 
    ///Custom Registration Hook
   const { InputChange, RegState, FormSubmit } = useRegistration({
-    name:"",
+    Name:"",
     email:"",
     phone:"" ,
   });
@@ -21,8 +21,8 @@ const Registration = () => {
 
   return (
     <>
-      <h1 className="text-[50px] text-blue-800">Game User Registration</h1>
-      <form onSubmit={ONSubmit}>
+      <h1 className="text-[50px] text-gray-800">Game User Registration</h1>
+      <form onSubmit={ONSubmit} className="w-[50vw] border-[4px] m-auto rounded-2xl">
         <div className="flex justify-center items-center flex-col">
           <div className="mt-5">
             <label htmlFor="Name" className="float-left font-bold">
@@ -34,7 +34,7 @@ const Registration = () => {
                 type="text"
                 value={RegState.Name}
                 onChange={InputChange}
-                name="name"
+                name="Name"
               />
             </div>
           </div>

@@ -27,9 +27,9 @@ function useRegistration({ Name, email, phone }) {
       localStorage.setItem(
         "dataKey",
         JSON.stringify({
-          name: RegState.Name,
-          email: RegState.email,
-          phone: RegState.phone,
+          Name: Name,
+          email: email,
+          phone: phone,
         })
       );
     }
