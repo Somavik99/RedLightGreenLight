@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { EmailRegex, NameRegex } from "./Regex";
 
-function useRegistration({name , email , phone} ) {
+function useRegistration({ name, email, phone }) {
   const [RegState, setRegState] = useState({
-    name:"",
-    email:"",
-    phone:"",
+    name: "",
+    email: "",
+    phone: "",
   });
 
   const InputChange = (e) => {
@@ -18,16 +18,19 @@ function useRegistration({name , email , phone} ) {
     });
   };
 
-  const FormSubmit = (name,email,phone) => {
-   const { name, email, phone } = RegState
+  const FormSubmit = () => {
     if (NameRegex.test(name)) {
       alert("Please Enter a Valid Name");
     } else if (EmailRegex.test(email)) {
       alert("Please Enter a Valid Email");
-    } else if (phone.length < 10) {
+    } else if (typeof phone !== "string" && phone < 10) {
       alert("Please enter a valid phone number");
     } else {
-      localStorage.setItem("dataKey", JSON.stringify( name, email, phone ));
+      localStorage.setItem(
+        "dataKey",
+        JSON.stringify({ name: name, email: email, phone: phone })
+      );
+      console.log(RegState.name);
     }
   };
 

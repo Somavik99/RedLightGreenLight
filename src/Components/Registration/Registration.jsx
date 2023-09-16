@@ -2,17 +2,11 @@ import { Input } from "@material-tailwind/react";
 import useRegistration from "../Hooks/useRegistration";
 
 const Registration = () => {
-  const NameKey = {
-    Name: "Name",
-    Email: "Email",
-    Phone: "Phone",
-  };
-
   const { InputChange, RegState, FormSubmit } = useRegistration({
-    name:NameKey.Name,
-    email:NameKey.Email,
-    phone:NameKey.Phone}
-  );
+    Name: "",
+    Email: "",
+    Phone: "",
+  });
 
   const ONSubmit = (e) => {
     e.preventDefault();
@@ -29,11 +23,11 @@ const Registration = () => {
             </label>
             <div className="w-[30vw] mt-8">
               <Input
-                variant="standard"
+               label="name"
                 type="text"
                 value={RegState.name}
                 onChange={InputChange}
-                name={NameKey.Name}
+                name="Name"
               />
             </div>
           </div>
@@ -43,10 +37,10 @@ const Registration = () => {
             </label>
             <div className="w-[30vw] mt-8">
               <Input
-                variant="standard"
+            label="email"
                 type="email"
                 value={RegState.email}
-                name={NameKey.Email}
+                name="Email"
                 onChange={InputChange}
                 className=""
               />
@@ -58,10 +52,10 @@ const Registration = () => {
             </label>
             <div className="w-[30vw] mt-8">
               <Input
-                variant="standard"
+                label="Phone"
                 type="text"
                 value={RegState.phone}
-                name={NameKey.Phone}
+                name="Phone"
                 className=""
                 onChange={InputChange}
               />
@@ -71,7 +65,7 @@ const Registration = () => {
             <button
               onClick={FormSubmit}
               type="submit"
-              className="text-red-500 font-bold border-[2px] w-[100px] h-[50px] border-gray-400 border-spacing-7 rounded-[8px]"
+              className="text-red-500 font-bold border-[1px] border-blue-gray-500 w-[100px] h-[50px]  rounded-[8px] hover:bg-green-400 hover:text-white hover:transition-all hover:-translate-y-1 hover:delay-[150ms] hover:ease-in delay-100 transition-all"
             >
               SUBMIT
             </button>
