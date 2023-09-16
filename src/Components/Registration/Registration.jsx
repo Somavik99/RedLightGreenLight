@@ -8,10 +8,10 @@ const Registration = () => {
     Phone: "Phone",
   };
 
-  const { InputChange, RegState, FormSubmit } = useRegistration(
-    NameKey.Name,
-    NameKey.Email,
-    NameKey.Phone
+  const { InputChange, RegState, FormSubmit } = useRegistration({
+    name:NameKey.Name,
+    email:NameKey.Email,
+    phone:NameKey.Phone}
   );
 
   const ONSubmit = (e) => {
@@ -20,7 +20,7 @@ const Registration = () => {
 
   return (
     <>
-      <h1 className="text-[50px] text-green-400">User Registration</h1>
+      <h1 className="text-[50px] text-blue-800">Game User Registration</h1>
       <form onSubmit={ONSubmit}>
         <div className="flex justify-center items-center flex-col">
           <div className="mt-5">
