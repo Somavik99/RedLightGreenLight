@@ -1,36 +1,37 @@
 import { useState } from "react";
 import { EmailRegex, NameRegex } from "./Regex";
 
-function useRegistration({ name, email, phone }) {
+function useRegistration({ Name, email, phone }) {
   const [RegState, setRegState] = useState({
-    name: "",
-    email: "",
-    phone: "",
+    Name: Name,
+    email: email,
+    phone: phone,
   });
 
   const InputChange = (e) => {
-    const { name, value } = e.target;
     setRegState((reg) => {
-      return {
-        ...reg,
-        [name]: value,
-      };
+      return { ...reg, [e.target.name]: e.target.value };
     });
   };
 
   const FormSubmit = () => {
-    if (NameRegex.test(name)) {
+    const { Name, email, phone } = RegState;
+
+    if (NameRegex.test(Name)) {
       alert("Please Enter a Valid Name");
-    } else if (EmailRegex.test(email)) {
+    } else if (EmailRegex.test(email) ) {
       alert("Please Enter a Valid Email");
-    } else if (typeof phone !== "string" && phone < 10) {
-      alert("Please enter a valid phone number");
+    } else if (Number(phone.split("").join("").length) !== 10 || Number("")) {
+      alert("Please enter a valid phone number  of 10 digits");
     } else {
       localStorage.setItem(
         "dataKey",
-        JSON.stringify({ name: name, email: email, phone: phone })
+        JSON.stringify({
+          name: RegState.Name,
+          email: RegState.email,
+          phone: RegState.phone,
+        })
       );
-      console.log(RegState.name);
     }
   };
 

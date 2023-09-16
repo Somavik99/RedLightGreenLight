@@ -2,15 +2,22 @@ import { Input } from "@material-tailwind/react";
 import useRegistration from "../Hooks/useRegistration";
 
 const Registration = () => {
+
+
+   ///Custom Registration Hook
   const { InputChange, RegState, FormSubmit } = useRegistration({
-    Name: "",
-    Email: "",
-    Phone: "",
+    name:"",
+    email:"",
+    phone:"" ,
   });
 
   const ONSubmit = (e) => {
     e.preventDefault();
   };
+
+  console.log(RegState)
+ 
+  
 
   return (
     <>
@@ -23,11 +30,11 @@ const Registration = () => {
             </label>
             <div className="w-[30vw] mt-8">
               <Input
-               label="name"
+                label="name"
                 type="text"
-                value={RegState.name}
+                value={RegState.Name}
                 onChange={InputChange}
-                name="Name"
+                name="name"
               />
             </div>
           </div>
@@ -37,10 +44,10 @@ const Registration = () => {
             </label>
             <div className="w-[30vw] mt-8">
               <Input
-            label="email"
+                label="email"
                 type="email"
                 value={RegState.email}
-                name="Email"
+                name="email"
                 onChange={InputChange}
                 className=""
               />
@@ -55,7 +62,7 @@ const Registration = () => {
                 label="Phone"
                 type="text"
                 value={RegState.phone}
-                name="Phone"
+                name="phone"
                 className=""
                 onChange={InputChange}
               />
