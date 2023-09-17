@@ -21,8 +21,9 @@ const Registration = () => {
 
   return (
     <>
-      <h1 className="text-[50px] text-gray-800">Game User Registration</h1>
-      <form onSubmit={ONSubmit} className="w-[50vw] border-[4px] m-auto rounded-2xl">
+      <h1 className="text-[50px] text-center text-gray-800">Game User Registration</h1>
+      <form onSubmit={ONSubmit} className="w-[40vw] border-[4px] m-auto text-center rounded-2xl">
+      
         <div className="flex justify-center items-center flex-col">
           <div className="mt-5">
             <label htmlFor="Name" className="float-left font-bold">
@@ -30,6 +31,7 @@ const Registration = () => {
             </label>
             <div className="w-[30vw] mt-8">
               <Input
+              className="md:w-[30vw] "
                 label="name"
                 type="text"
                 value={RegState.Name}
@@ -44,12 +46,13 @@ const Registration = () => {
             </label>
             <div className="w-[30vw] mt-8">
               <Input
+                className="md:w-[30vw] "
                 label="email"
                 type="email"
                 value={RegState.email}
                 name="email"
                 onChange={InputChange}
-                className=""
+                
               />
             </div>
           </div>
@@ -63,7 +66,7 @@ const Registration = () => {
                 type="text"
                 value={RegState.phone}
                 name="phone"
-                className=""
+                className="md:w-[30vw] "
                 onChange={InputChange}
               />
             </div>

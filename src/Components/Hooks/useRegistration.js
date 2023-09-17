@@ -9,6 +9,7 @@ function useRegistration({ Name, email, phone }) {
   });
 
   const [Error, setError] = useState(true);
+  const [LoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     if (Error) {
