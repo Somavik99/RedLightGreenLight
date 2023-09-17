@@ -1,6 +1,6 @@
  const RegexDaTa = {
-    RegName:"^[A-Z][a-zA-Z '.-]*[A-Za-z][^-]$",
-    RegEmail:"^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:/.[a-zA-Z0-9-]+)*$",
+    RegName:"^[a-zA-Z ]{2,30}$",
+    RegEmail:"[a-z0-9]+@[a-z]+/.[a-z]{2,3}",
 }
 
 const NameRegex = new RegExp(RegexDaTa.RegName);

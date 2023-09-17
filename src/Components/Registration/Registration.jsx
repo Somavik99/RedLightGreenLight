@@ -15,7 +15,7 @@ const Registration = () => {
     e.preventDefault();
   };
 
-  console.log(RegState)
+ 
  
   
 
