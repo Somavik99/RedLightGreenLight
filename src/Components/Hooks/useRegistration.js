@@ -12,7 +12,7 @@ function useRegistration({ Name, email, phone }) {
   const [LoggedIn, setLoggedIn] = useState(true);
 
   useEffect(() => {
-    if (Error ) {
+    if (Error && !LoggedIn ) {
       console.log(
         RegState.Name +
           " " +
@@ -23,7 +23,7 @@ function useRegistration({ Name, email, phone }) {
           "is not validated"
       );
     }
-  }, [RegState, Error]);
+  }, [RegState, Error,LoggedIn]);
 
   const InputChange = (e) => {
     setRegState((reg) => {

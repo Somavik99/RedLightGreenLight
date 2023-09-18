@@ -1,4 +1,1 @@
-export const LightColor = {
-  red: "red",
-  green: "green",
-};
+export const LightColor = [{ red: "red" }, { green: "green" }];

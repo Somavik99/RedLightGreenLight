@@ -36,7 +36,7 @@ const Registration = () => {
                 type="text"
                 value={RegState.Name}
                 onChange={InputChange}
-                name="Name"
+                name="Name" 
               />
             </div>
           </div>
