@@ -9,15 +9,21 @@ function useRegistration({ Name, email, phone }) {
   });
 
   const [Error, setError] = useState(true);
-  const [LoggedIn, setLoggedIn] = useState(false);
+  const [LoggedIn, setLoggedIn] = useState(true);
 
   useEffect(() => {
-    if (Error) {
-      setError((err) => {
-        return { ...err }, console.log(RegState.Name + ' ' + RegState.email + ' ' + RegState.phone + "is not validated");
-      });
+    if (Error ) {
+      console.log(
+        RegState.Name +
+          " " +
+          RegState.email +
+          " " +
+          RegState.phone +
+          " " +
+          "is not validated"
+      );
     }
-  }, [RegState,Error]);
+  }, [RegState, Error]);
 
   const InputChange = (e) => {
     setRegState((reg) => {
@@ -29,16 +35,22 @@ function useRegistration({ Name, email, phone }) {
     const { Name, email, phone } = RegState;
 
     if (NameRegex.test(Name) || "") {
-      setError(!Error)
+      setError(Error);
+      setLoggedIn(!LoggedIn);
       alert("Please Enter a Valid Name");
-    } else if (EmailRegex.test(email) || "") {
-      setError(!Error)
+    } else if (EmailRegex.test(email)) {
+      setError(Error);
+      setLoggedIn(!LoggedIn);
       alert("Please Enter a Valid Email");
     } else if (Number(phone.split("").join("").length) !== 10 || Number("")) {
-      setError(!Error)
+      setError(Error);
+      setLoggedIn(!LoggedIn);
+      console.log(!LoggedIn);
       alert("Please enter a valid phone number  of 10 digits");
     } else {
-      setError(Error)
+      setError(!Error);
+      setLoggedIn(LoggedIn);
+      console.log(`Is Logged In ${LoggedIn}`);
       localStorage.setItem(
         "dataKey",
         JSON.stringify({
@@ -47,12 +59,11 @@ function useRegistration({ Name, email, phone }) {
           phone: phone,
         })
       );
-      alert("Registered Successfully")
-      
+      alert("Registered Successfully");
     }
   };
 
-  return { InputChange, RegState, FormSubmit };
+  return { InputChange, RegState, FormSubmit, LoggedIn };
 }
 
 export default useRegistration;

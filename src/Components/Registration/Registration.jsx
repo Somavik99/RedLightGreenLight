@@ -32,7 +32,7 @@ const Registration = () => {
             <div className="w-[30vw] mt-8">
               <Input
               className="md:w-[30vw] "
-                label="name"
+                label="username"
                 type="text"
                 value={RegState.Name}
                 onChange={InputChange}
