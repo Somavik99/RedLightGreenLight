@@ -1,1 +1,1 @@
-export const ColorBg = [{ red: "red" }, { green: "green" }];
+export const ColorBg = [{ colors: "red" }, { colors: "green" }];
