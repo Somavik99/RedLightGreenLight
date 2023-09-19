@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { ColorBg } from "./Color";
 
-
-function useLight({ColorBg=[]}) {
+function useLight() {
   const [CurrentINdex, setCurrentIndex] = useState(0);
   const [CountClick, setCountClick] = useState(0);
   const [IsActive, setIsActive] = useState(false);
@@ -23,7 +23,7 @@ function useLight({ColorBg=[]}) {
     return () => {
       clearTimeout(Timer);
     };
-  }, [CurrentINdex, IsActive,ColorBg]);
+  }, [CurrentINdex, IsActive]);
 
   // const CLickCallBack = ColorBg.filter((Color,i) => {
   //   if (Color[i] === ColorBg[0]) {
@@ -41,11 +41,28 @@ function useLight({ColorBg=[]}) {
   //   }
   // });
 
+  const OnClickColor = () => {
+    setCountClick((count) => {
+      if (ColorBg[0]) {
+        return count * 0;
+      } else {
+        return count + 1;
+      }
+    });
+  };
+
   const ClickStart = () => {
     setIsActive((active) => !active);
   };
 
-  return { CountClick, ClickStart, IsActive,setCountClick,CurrentINdex };
+  return {
+    CountClick,
+    ClickStart,
+    IsActive,
+    setCountClick,
+    CurrentINdex,
+    OnClickColor,
+  };
 }
 
 export default useLight;
