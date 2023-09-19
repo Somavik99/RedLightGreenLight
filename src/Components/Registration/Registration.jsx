@@ -22,7 +22,7 @@ const Registration = () => {
   return (
     <>
       <h1 className="text-[50px] text-center text-gray-800">Game User Registration</h1>
-      <form onSubmit={ONSubmit} className="w-[40vw] border-[4px] m-auto text-center rounded-2xl">
+      <form onSubmit={ONSubmit} className="md:w-[40vw] md:border-[4px] border-gray-800 m-auto text-center rounded-2xl">
       
         <div className="flex justify-center items-center flex-col">
           <div className="mt-5">

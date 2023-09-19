@@ -12,7 +12,7 @@ function useRegistration({ Name, email, phone }) {
   const [LoggedIn, setLoggedIn] = useState(true);
 
   useEffect(() => {
-    if (Error && !LoggedIn ) {
+    if (!Error && LoggedIn ) {
       console.log(
         RegState.Name +
           " " +
@@ -20,7 +20,7 @@ function useRegistration({ Name, email, phone }) {
           " " +
           RegState.phone +
           " " +
-          "is not validated"
+          "is  validated"
       );
     }
   }, [RegState, Error,LoggedIn]);
@@ -45,7 +45,7 @@ function useRegistration({ Name, email, phone }) {
     } else if (Number(phone.split("").join("").length) !== 10 || Number("")) {
       setError(Error);
       setLoggedIn(!LoggedIn);
-      console.log(!LoggedIn);
+      
       alert("Please enter a valid phone number  of 10 digits");
     } else {
       setError(!Error);
@@ -63,7 +63,7 @@ function useRegistration({ Name, email, phone }) {
     }
   };
 
-  return { InputChange, RegState, FormSubmit, LoggedIn };
+  return { InputChange, RegState, FormSubmit };
 }
 
 export default useRegistration;
