@@ -1,11 +1,11 @@
 import useLight from "../Hooks/Light/useLight";
 import { ColorBg } from "../Hooks/Light/Color";
 import { useEffect, useState } from "react";
-
+import { Options } from "../Hooks/Light/Options";
 
 const RlightGLight = () => {
   const [TimeCount, setTimeCount] = useState(40);
- 
+
   const {
     CountClick,
     ClickStart,
@@ -32,7 +32,15 @@ const RlightGLight = () => {
     <div>
       <div className="flex justify-center items-center flex-col">
         <div className="mb-[-20px] mt-[30px]">
-
+          <button className="m-[10px] w-[100px] h-[50px] border-[2px] border-gray-800 rounded-xl  bg-blue-gray-200">
+            {Options.EasyClick}
+          </button>
+          <button className="m-[10px] w-[100px] h-[50px] border-[2px] border-gray-800 rounded-xl  bg-blue-gray-200">
+            {Options.MediumClick}
+          </button>
+          <button className="m-[10px] w-[100px] h-[50px] border-[2px] border-gray-800 rounded-xl  bg-blue-gray-200">
+            {Options.HardClick}
+          </button>
         </div>
         <div className="w-[30vw] md:w-[30vw] md:h-[30vw] h-[30vw] flex justify-center items-center flex-col  border-gray-800 m-auto mt-24 rounded-2xl bg-gray-200">
           {!IsActive ? (
