@@ -6,10 +6,10 @@ import { Options } from "../Hooks/Light/Options";
 import { Select } from "@material-tailwind/react";
 
 const RlightGLight = () => {
-  const [TimeCount, setTimeCount] = useState(41);
+  const [TimeCount, setTimeCount] = useState(40);
   const [ChangeOptions, setChangeOptions] = useState("");
-  const { CountClick, ClickStart, CurrentINdex, IsActive, OnClickColor } =
-    useLight({ TimeCount });
+  const { CountClick, ClickStart, CurrentINdex, IsActive, OnClickColor,ClickStop } =
+    useLight({ TimeCount,setTimeCount });
 
   useEffect(() => {
     let CountTimer;
@@ -48,11 +48,12 @@ const RlightGLight = () => {
                 <div key={index}>
                   {
                     index === CurrentINdex ? (
-                      <div
+                      <button
                         className="md:w-[15vw] w-[8vw] h-[8vw] md:h-[15vw] border-[2px] border-gray-800  rounded-full  mt-[12%] "
                         style={{ backgroundColor: color.colors }}
                         onClick={OnClickColor}
-                      ></div>
+                        disabled={TimeCount === 0}
+                      ></button>
                     ) : null
                     // <div className="md:w-[15vw] w-[8vw] h-[8vw] md:h-[15vw] border-[2px] border-gray-800  rounded-full  mt-[12%] " style={{ backgroundColor:"red"}}></div>
                   }
@@ -65,12 +66,21 @@ const RlightGLight = () => {
               style={{ backgroundColor: "red" }}
             ></div>
           )}
-          <button
+          {!IsActive ? (
+            <button
+              className="m-auto w-[100px] h-[50px] border-[2px] border-gray-800 rounded-xl  bg-blue-gray-200 mt-[5%]"
+              onClick={ClickStop}
+            >
+              RESET
+            </button>
+          ) : (
+            <button
             className="m-auto w-[100px] h-[50px] border-[2px] border-gray-800 rounded-xl  bg-blue-gray-200 mt-[5%]"
             onClick={ClickStart}
           >
-            {!IsActive ? "STOP" : "START"}
+            START
           </button>
+          )}
           <div className=" text-gray-500 text-[80px]">
             {!IsActive ? CountClick : 0}
           </div>

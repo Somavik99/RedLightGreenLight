@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { ColorBg } from "./Color";
 
-function useLight({TimeCount}) {
+function useLight({ TimeCount,setTimeCount }) {
   const [CurrentINdex, setCurrentIndex] = useState(0);
   const [CountClick, setCountClick] = useState(0);
   const [IsActive, setIsActive] = useState(true);
- 
 
   useEffect(() => {
     let Timer;
 
-    if (!IsActive && TimeCount!==0 ) {
+    if (!IsActive && TimeCount !== 0) {
       Timer = setTimeout(() => {
         setCurrentIndex((n) => {
           return n > CurrentINdex
@@ -25,20 +24,27 @@ function useLight({TimeCount}) {
     return () => {
       clearTimeout(Timer);
     };
-  }, [CurrentINdex, IsActive,TimeCount]);
+  }, [CurrentINdex, IsActive, TimeCount]);
 
   const OnClickColor = () => {
     setCountClick((count) => {
       return CurrentINdex === 0
-        ? count
+        ? 0
         : CurrentINdex === ColorBg.length - 1
         ? count + 1
-        : 0;
+        : count;
     });
   };
   const ClickStart = () => {
     setIsActive((active) => !active);
   };
+
+  const ClickStop = ()=>{
+    setCountClick(0)
+    setTimeCount(40)
+    setCurrentIndex(0)
+    setIsActive(true)
+  }
 
   return {
     CountClick,
@@ -47,7 +53,7 @@ function useLight({TimeCount}) {
     setCountClick,
     CurrentINdex,
     OnClickColor,
-
+    ClickStop
   };
 }
 
