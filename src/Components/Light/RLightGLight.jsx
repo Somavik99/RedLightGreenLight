@@ -1,11 +1,15 @@
 import useLight from "../Hooks/Light/useLight";
 import { ColorBg } from "../Hooks/Light/Color";
 import { useEffect, useState } from "react";
+import SelectOpt from "../Hooks/Light/SelectOpt";
+import { Options } from "../Hooks/Light/Options";
+import { Select } from "@material-tailwind/react";
 
 const RlightGLight = () => {
-  const [TimeCount, setTimeCount] = useState(40);
+  const [TimeCount, setTimeCount] = useState(41);
+  const [ChangeOptions, setChangeOptions] = useState("");
   const { CountClick, ClickStart, CurrentINdex, IsActive, OnClickColor } =
-    useLight({TimeCount});
+    useLight({ TimeCount });
 
   useEffect(() => {
     let CountTimer;
@@ -23,6 +27,20 @@ const RlightGLight = () => {
   return (
     <div>
       <div className="flex justify-center items-center flex-col">
+        <div className="mb-[-20px] mt-[30px]">
+          <Select variant="standard" label="Select Mode">
+            {Options.map((opt, i) => {
+              return (
+                <SelectOpt
+                  option={opt}
+                  key={i}
+                  ChangeValue={ChangeOptions}
+                  setChangeOptions={setChangeOptions}
+                />
+              );
+            })}
+          </Select>
+        </div>
         <div className="w-[30vw] md:w-[30vw] md:h-[30vw] h-[30vw] flex justify-center items-center flex-col  border-gray-800 m-auto mt-24 rounded-2xl bg-gray-200">
           {!IsActive ? (
             ColorBg.map((color, index) => {
@@ -53,11 +71,13 @@ const RlightGLight = () => {
           >
             {!IsActive ? "STOP" : "START"}
           </button>
-          <div className="mb-[10%] text-gray-500 text-[80px]">
+          <div className=" text-gray-500 text-[80px]">
             {!IsActive ? CountClick : 0}
           </div>
         </div>
-        <div className="mb-[10%] text-gray-500 text-[80px]">Time:{!IsActive ?TimeCount:0 }</div>
+        <div className="mb-[10%] text-gray-500 text-[80px]">
+          Time:{!IsActive ? TimeCount : 0}
+        </div>
       </div>
     </div>
   );
