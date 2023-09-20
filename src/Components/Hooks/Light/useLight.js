@@ -8,6 +8,7 @@ function useLight() {
 
   useEffect(() => {
     let Timer;
+    let CountTimer;
     if (!IsActive) {
       Timer = setTimeout(() => {
         setCurrentIndex((n) => {
@@ -20,15 +21,20 @@ function useLight() {
       }, 500);
     }
 
+    CountTimer = setTimeout(()=>{
+
+    })
+
     return () => {
-      clearTimeout(Timer);
+      clearTimeout(Timer,CountTimer);
+
     };
   }, [CurrentINdex, IsActive]);
 
   const OnClickColor = () => {
     setCountClick((count) => {
       return CurrentINdex === 0
-        ? alert("You lose")
+        ? count
         : CurrentINdex === ColorBg.length - 1
         ? count + 1
         : count;

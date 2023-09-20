@@ -38,7 +38,7 @@ const RlightGLight = () => {
            {!IsActive? "STOP": "START"}
           </button>
           <div className="mb-[10%] text-gray-500 text-[80px]">
-            {!IsActive ? CountClick : null}
+            {!IsActive ? CountClick : 0}
           </div>
         </div>
       </div>
