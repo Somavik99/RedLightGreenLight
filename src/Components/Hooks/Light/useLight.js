@@ -5,6 +5,7 @@ function useLight() {
   const [CurrentINdex, setCurrentIndex] = useState(0);
   const [CountClick, setCountClick] = useState(0);
   const [IsActive, setIsActive] = useState(true);
+  const [TimeCount,setTimeCount] = useState(40)
 
   useEffect(() => {
     let Timer;
@@ -20,16 +21,16 @@ function useLight() {
         });
       }, 500);
     }
-
+if(TimeCount!==0){
     CountTimer = setTimeout(()=>{
-
-    })
+setTimeCount((t)=>t-1)
+    },1000)}
 
     return () => {
       clearTimeout(Timer,CountTimer);
 
     };
-  }, [CurrentINdex, IsActive]);
+  }, [CurrentINdex, IsActive,TimeCount]);
 
   const OnClickColor = () => {
     setCountClick((count) => {
@@ -51,6 +52,7 @@ function useLight() {
     setCountClick,
     CurrentINdex,
     OnClickColor,
+    TimeCount
   };
 }
 

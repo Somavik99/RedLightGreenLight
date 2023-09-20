@@ -41,6 +41,9 @@ const RlightGLight = () => {
             {!IsActive ? CountClick : 0}
           </div>
         </div>
+        <div>
+
+        </div>
       </div>
     </div>
   );
