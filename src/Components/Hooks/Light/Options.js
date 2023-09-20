@@ -1,5 +1,5 @@
-export const Options = [
-  { Mode: "Easy", Click: 15 },
-  { Mode: "Medium", Click: 25 },
-  { Mode: "Hard", Click: 25 },
-];
+export const Options = {
+  EasyClick: 15,
+  MediumClick: 25,
+  HardClick: 25,
+};
