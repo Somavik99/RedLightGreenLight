@@ -9,35 +9,37 @@ const RlightGLight = () => {
     <div>
       <div className="">
         <div className="w-[30vw] md:w-[30vw] md:h-[30vw] h-[30vw] flex justify-center items-center flex-col  border-gray-800 m-auto mt-24 rounded-2xl bg-gray-200">
-          {!IsActive
-            ? ColorBg.map((color, index) => {
-                return (
-                  <div key={index}>
-                    {index === CurrentINdex ? (
-                      <div
-                        className="md:w-[15vw] w-[8vw] h-[8vw] md:h-[15vw] border-[2px] border-gray-800  rounded-full  mt-[12%] "
-                        style={{ backgroundColor: color.colors }}
-                      onClick={OnClickColor}  
-                      ></div>
-                    ) : (
-                      null
-                      // <div className="md:w-[15vw] w-[8vw] h-[8vw] md:h-[15vw] border-[2px] border-gray-800  rounded-full  mt-[12%] " style={{ backgroundColor:"red"}}></div>
-                    )}
-                  </div>
-                );
-              })
-            :  <div
-            className="md:w-[15vw] w-[8vw] h-[8vw] md:h-[15vw] border-[2px] border-gray-800  rounded-full  mt-[12%] "
-            style={{ backgroundColor: "red" }}
-         
-          ></div>}
+          {!IsActive ? (
+            ColorBg.map((color, index) => {
+              return (
+                <div key={index}>
+                  {index === CurrentINdex ? (
+                    <div
+                      className="md:w-[15vw] w-[8vw] h-[8vw] md:h-[15vw] border-[2px] border-gray-800  rounded-full  mt-[12%] "
+                      style={{ backgroundColor: color.colors }}
+                      onClick={OnClickColor}
+                    ></div>
+                  ) : null
+                  // <div className="md:w-[15vw] w-[8vw] h-[8vw] md:h-[15vw] border-[2px] border-gray-800  rounded-full  mt-[12%] " style={{ backgroundColor:"red"}}></div>
+                  }
+                </div>
+              );
+            })
+          ) : (
+            <div
+              className="md:w-[15vw] w-[8vw] h-[8vw] md:h-[15vw] border-[2px] border-gray-800  rounded-full  mt-[12%] "
+              style={{ backgroundColor: "red" }}
+            ></div>
+          )}
           <button
             className="m-auto w-[100px] h-[50px] border-[2px] border-gray-800 rounded-xl  bg-blue-gray-200 mt-[5%]"
             onClick={ClickStart}
           >
-            START
+           {!IsActive? "STOP": "START"}
           </button>
-          <div>{!IsActive ? CountClick : null}</div>
+          <div className="mb-[10%] text-gray-500 text-[80px]">
+            {!IsActive ? CountClick : null}
+          </div>
         </div>
       </div>
     </div>

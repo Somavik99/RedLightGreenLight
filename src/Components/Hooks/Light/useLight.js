@@ -4,7 +4,7 @@ import { ColorBg } from "./Color";
 function useLight() {
   const [CurrentINdex, setCurrentIndex] = useState(0);
   const [CountClick, setCountClick] = useState(0);
-  const [IsActive, setIsActive] = useState(false);
+  const [IsActive, setIsActive] = useState(true);
 
   useEffect(() => {
     let Timer;
@@ -17,7 +17,7 @@ function useLight() {
             ? 0
             : n + 1;
         });
-      }, 100);
+      }, 500);
     }
 
     return () => {
@@ -25,32 +25,15 @@ function useLight() {
     };
   }, [CurrentINdex, IsActive]);
 
-  // const CLickCallBack = ColorBg.filter((Color,i) => {
-  //   if (Color[i] === ColorBg[0]) {
-  //     setCountClick((count) => {
-  //       return count * 0;
-  //     });
-  //     IsActive;
-  //   } else if (Color[i] === ColorBg[1]) {
-  //     setCountClick((count) => {
-  //       return count + 1;
-  //     });
-  //     !IsActive;
-  //   } else {
-  //     return CountClick;
-  //   }
-  // });
-
   const OnClickColor = () => {
     setCountClick((count) => {
-      if (ColorBg[0]) {
-        return count * 0;
-      } else {
-        return count + 1;
-      }
+      return CurrentINdex === 0
+        ? alert("You lose")
+        : CurrentINdex === ColorBg.length - 1
+        ? count + 1
+        : count;
     });
   };
-
   const ClickStart = () => {
     setIsActive((active) => !active);
   };
