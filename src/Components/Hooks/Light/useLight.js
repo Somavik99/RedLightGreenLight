@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ColorBg } from "./Color";
 
-function useLight({ TimeCount,setTimeCount }) {
+function useLight({ TimeCount, setTimeCount, setClickState }) {
   const [CurrentINdex, setCurrentIndex] = useState(0);
   const [CountClick, setCountClick] = useState(0);
   const [IsActive, setIsActive] = useState(true);
@@ -18,7 +18,7 @@ function useLight({ TimeCount,setTimeCount }) {
             ? 0
             : n + 1;
         });
-      }, 200);
+      }, 400);
     }
 
     return () => {
@@ -39,12 +39,24 @@ function useLight({ TimeCount,setTimeCount }) {
     setIsActive((active) => !active);
   };
 
-  const ClickStop = ()=>{
-    setCountClick(0)
-    setTimeCount(40)
-    setCurrentIndex(0)
-    setIsActive(true)
-  }
+  const ClickStop = () => {
+    setCountClick(0);
+    setTimeCount(40);
+    setCurrentIndex(0);
+    setIsActive(true);
+  };
+
+  const OnClickState = () => {
+    setClickState((click) => {
+      return click.Easy
+        ? CountClick === 15
+        : click.Medium
+        ? CountClick === 25
+        : click.Hard
+        ? CountClick === 35
+        : click.Easy;
+    });
+  };
 
   return {
     CountClick,
@@ -53,7 +65,8 @@ function useLight({ TimeCount,setTimeCount }) {
     setCountClick,
     CurrentINdex,
     OnClickColor,
-    ClickStop
+    ClickStop,
+    OnClickState,
   };
 }
 

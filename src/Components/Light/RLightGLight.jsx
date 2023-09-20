@@ -1,10 +1,14 @@
 import useLight from "../Hooks/Light/useLight";
 import { ColorBg } from "../Hooks/Light/Color";
 import { useEffect, useState } from "react";
-import { Options } from "../Hooks/Light/Options";
 
 const RlightGLight = () => {
   const [TimeCount, setTimeCount] = useState(40);
+  const [ClickState, setClickState] = useState({
+    Easy: 15,
+    Medium: 25,
+    Hard: 35,
+  });
 
   const {
     CountClick,
@@ -13,7 +17,8 @@ const RlightGLight = () => {
     IsActive,
     OnClickColor,
     ClickStop,
-  } = useLight({ TimeCount, setTimeCount });
+    OnClickState,
+  } = useLight({ TimeCount, setTimeCount, setClickState });
 
   useEffect(() => {
     let CountTimer;
@@ -32,14 +37,29 @@ const RlightGLight = () => {
     <div>
       <div className="flex justify-center items-center flex-col">
         <div className="mb-[-20px] mt-[30px]">
-          <button className="m-[10px] w-[100px] h-[50px] border-[2px] border-gray-800 rounded-xl  bg-blue-gray-200">
-            {Options.EasyClick}
+          <button
+            name="Easy"
+            value={ClickState.Easy}
+            onClick={OnClickState}
+            className="m-[10px] w-[100px] h-[50px] border-[2px] border-gray-800 rounded-xl  bg-blue-gray-200"
+          >
+            Easy
           </button>
-          <button className="m-[10px] w-[100px] h-[50px] border-[2px] border-gray-800 rounded-xl  bg-blue-gray-200">
-            {Options.MediumClick}
+          <button
+            value={ClickState.Medium}
+            onClick={OnClickState}
+            name="Medium"
+            className="m-[10px] w-[100px] h-[50px] border-[2px] border-gray-800 rounded-xl  bg-blue-gray-200"
+          >
+            Medium
           </button>
-          <button className="m-[10px] w-[100px] h-[50px] border-[2px] border-gray-800 rounded-xl  bg-blue-gray-200">
-            {Options.HardClick}
+          <button
+            value={ClickState.Hard}
+            onClick={OnClickState}
+            name="Hard"
+            className="m-[10px] w-[100px] h-[50px] border-[2px] border-gray-800 rounded-xl  bg-blue-gray-200"
+          >
+            Hard
           </button>
         </div>
         <div className="w-[30vw] md:w-[30vw] md:h-[30vw] h-[30vw] flex justify-center items-center flex-col  border-gray-800 m-auto mt-24 rounded-2xl bg-gray-200">
@@ -87,7 +107,7 @@ const RlightGLight = () => {
           </div>
         </div>
         <div className="mb-[10%] text-gray-500 text-[80px]">
-          Time:{!IsActive ? TimeCount : 0}
+          Time: {!IsActive ? TimeCount : 0}s
         </div>
       </div>
     </div>
